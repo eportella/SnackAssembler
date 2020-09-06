@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnackAssembler", "src\SnackAssembler.csproj", "{C629EAD5-60C4-4445-97F1-1C72B433B187}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnackAssembler.TEST", "test\SnackAssembler.TEST.csproj", "{293C2092-CBC2-47DC-BD51-5B631FEEF947}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C629EAD5-60C4-4445-97F1-1C72B433B187}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C629EAD5-60C4-4445-97F1-1C72B433B187}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C629EAD5-60C4-4445-97F1-1C72B433B187}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C629EAD5-60C4-4445-97F1-1C72B433B187}.Release|Any CPU.Build.0 = Release|Any CPU
+		{293C2092-CBC2-47DC-BD51-5B631FEEF947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{293C2092-CBC2-47DC-BD51-5B631FEEF947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{293C2092-CBC2-47DC-BD51-5B631FEEF947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{293C2092-CBC2-47DC-BD51-5B631FEEF947}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B256F902-6DBF-41B3-A475-380C3A67ABDC}
+	EndGlobalSection
+EndGlobal
