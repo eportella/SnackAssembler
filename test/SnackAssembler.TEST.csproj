@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Portella.Board\SnackAssembler.csproj" />
+    <ProjectReference Include="..\src\SnackAssembler.csproj" />
   </ItemGroup>
 
 </Project>

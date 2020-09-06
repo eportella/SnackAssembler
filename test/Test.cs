@@ -63,7 +63,6 @@ namespace SnackAssembler
                 return messages;
             }
 
-
             Assert.Equal("SesameBread0|Hambuger|Hambuger|Cheese|Lettuce|SpecialSauce|Onion|Pickles|Lettuce|SesameBread1", string.Join("|", bigmac()));
         }
     }
