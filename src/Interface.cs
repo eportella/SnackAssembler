@@ -18,13 +18,14 @@ namespace SnackAssembler
                 Assemble = () =>
                 {
                     bool assembled = false;
-                    layer.StickIn(new Snack.Part.Service { 
+                    layer.StickIn(new Snack.Part.Service
+                    {
                         Next = () =>
                         {
                             if (assembled)
                                 throw new Impossible.Service { };
-                            Plan(desktop).Assemble();
                             assembled = true;
+                            Plan(desktop).Assemble();
                         }
                     });
 

@@ -42,6 +42,26 @@ namespace SnackAssembler
             Assert.False(Desktop.Interface.PickUpAll(new Layer.OneDelivered { }, default, new Layer.OneDelivered { }).Layers.Skip(2).Any());
 
         [Fact]
+        public void TestXEgg()
+        {
+            static IEnumerable<string> xegg()
+            {
+                var messages = new List<string>();
+                Interface.Plan(
+                    Desktop.Interface.PickUpAll(
+                        new Layer.XEgg.Bread(messages),
+                        new Layer.XEgg.Egg(messages),
+                        new Layer.XEgg.Cheese(messages)
+                    )
+                )
+                .Assemble();
+                return messages;
+            }
+
+            Assert.Equal("Bread0|Egg|Cheese|Bread1", string.Join("|", xegg()));
+        }
+
+        [Fact]
         public void TestBigMac()
         {
             static IEnumerable<string> bigmac()
@@ -64,6 +84,59 @@ namespace SnackAssembler
             }
 
             Assert.Equal("SesameBread0|Hambuger|Hambuger|Cheese|Lettuce|SpecialSauce|Onion|Pickles|Lettuce|SesameBread1", string.Join("|", bigmac()));
+        }
+
+        [Fact]
+        public void TestMultiLayerExceptionFilters()
+        {
+            static IEnumerable<string> withoutNext()
+            {
+                var messages = new List<string>();
+                Interface.Plan(
+                    Desktop.Interface.PickUpAll(
+                        new Layer.MultiLayerExceptionFilter.Silent(messages),
+                        new Layer.MultiLayerExceptionFilter.Authentication(messages),
+                        new Layer.MultiLayerExceptionFilter.Cryptography(messages),
+                        new Layer.MultiLayerExceptionFilter.WithoutNextThrowCriptography()
+                    )
+                )
+                .Assemble();
+                return messages;
+            }
+
+            static IEnumerable<string> withNext()
+            {
+                var messages = new List<string>();
+                Interface.Plan(
+                    Desktop.Interface.PickUpAll(
+                        new Layer.MultiLayerExceptionFilter.Silent(messages),
+                        new Layer.MultiLayerExceptionFilter.Authentication(messages),
+                        new Layer.MultiLayerExceptionFilter.Cryptography(messages),
+                        new Layer.MultiLayerExceptionFilter.WithNextThrowCriptography()
+                    )
+                )
+                .Assemble();
+                return messages;
+            }
+
+            static IEnumerable<string> authenticate()
+            {
+                var messages = new List<string>();
+                Interface.Plan(
+                    Desktop.Interface.PickUpAll(
+                        new Layer.MultiLayerExceptionFilter.Silent(messages),
+                        new Layer.MultiLayerExceptionFilter.Authentication(messages),
+                        new Layer.MultiLayerExceptionFilter.Cryptography(messages),
+                        new Layer.MultiLayerExceptionFilter.ThrowAutenthicate()
+                    )
+                )
+                .Assemble();
+                return messages;
+            }
+
+            Assert.Equal("Error occurred during a cryptographic operation.|Silent", string.Join("|", withoutNext()));
+            Assert.Equal("Error occurred during a cryptographic operation.|Silent", string.Join("|", withNext()));
+            Assert.Equal("CustomMessageAuthenticateException|Silent", string.Join("|", authenticate()));
         }
     }
 }
