@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace SnackAssembler
 {
@@ -17,19 +18,22 @@ namespace SnackAssembler
             {
                 Assemble = () =>
                 {
-                    bool assembled = false;
-                    layer.StickIn(new Snack.Part.Service
+                    var part = new Snack.Part.Service
                     {
-                        Next = () =>
-                        {
-                            if (assembled)
-                                throw new Impossible.Service { };
-                            assembled = true;
-                            Plan(desktop).Assemble();
-                        }
-                    });
+                        Assembled = default,
+                    };
+                    
+                    part.Next = () =>
+                    {
+                        if (part.Assembled)
+                            throw new Impossible.Service { };
+                        part.Assembled = true;
+                        Plan(desktop).Assemble();
+                    };
 
-                    if (!assembled)
+                    layer.StickIn(part);
+
+                    if (!part.Assembled)
                         throw new Impossible.Service { };
                 }
             };

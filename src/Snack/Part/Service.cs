@@ -6,5 +6,6 @@ namespace SnackAssembler.Snack.Part
     {
         internal Service() { }
         public Action Next { get; internal set; }
+        public bool Assembled { get; internal set; }
     }
 }
