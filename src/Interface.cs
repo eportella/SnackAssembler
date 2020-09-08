@@ -16,13 +16,27 @@ namespace SnackAssembler
 
             return new Service
             {
-                Assemble = () =>
+                Assemble = Assemble(desktop, layer)
+            };
+
+            static Action Assemble(Desktop.Service desktop, Layer.Interface layer)
+            {
+                return () =>
                 {
                     var part = new Snack.Part.Service
                     {
                         Assembled = default,
                     };
-                    
+                    Next(desktop, part);
+
+                    layer.StickIn(part);
+
+                    if (!part.Assembled)
+                        throw new Impossible.Service { };
+                };
+
+                static void Next(Desktop.Service desktop, Snack.Part.Service part)
+                {
                     part.Next = () =>
                     {
                         if (part.Assembled)
@@ -30,13 +44,8 @@ namespace SnackAssembler
                         part.Assembled = true;
                         Plan(desktop).Assemble();
                     };
-
-                    layer.StickIn(part);
-
-                    if (!part.Assembled)
-                        throw new Impossible.Service { };
                 }
-            };
+            }
         }
     }
 }
