@@ -4,7 +4,7 @@
     {
         public void StickIn(Snack.Part.Service part)
         {
-            part.Next();
+            part.Continue();
         }
     }
 }

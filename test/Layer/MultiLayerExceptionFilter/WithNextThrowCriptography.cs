@@ -6,7 +6,7 @@ namespace SnackAssembler.Layer.MultiLayerExceptionFilter
     {
         public void StickIn(Snack.Part.Service part)
         {
-            part.Next();
+            part.Continue();
             throw new CryptographicException();
         }
     }

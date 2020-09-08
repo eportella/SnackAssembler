@@ -12,7 +12,7 @@ namespace SnackAssembler.Layer.BigMac
         public void StickIn(Snack.Part.Service part)
         {
             Messages.Add(nameof(SesameBread) + 0);
-            part.Next();
+            part.Continue();
             Messages.Add(nameof(SesameBread) + 1);
         }
     }

@@ -12,7 +12,7 @@ namespace SnackAssembler.Layer.BigMac
         public void StickIn(Snack.Part.Service part)
         {
             Messages.Add(nameof(SpecialSauce));
-            part.Next();
+            part.Continue();
         }
     }
 }

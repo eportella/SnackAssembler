@@ -12,7 +12,7 @@ namespace SnackAssembler.Layer.XEgg
         public void StickIn(Snack.Part.Service part)
         {
             Messages.Add(nameof(Egg));
-            part.Next();
+            part.Continue();
         }
     }
 }

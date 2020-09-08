@@ -13,7 +13,7 @@ namespace SnackAssembler.Layer.BigMac
         public void StickIn(Snack.Part.Service part)
         {
             Messages.Add(nameof(Hambuger));
-            part.Next();
+            part.Continue();
         }
     }
 }

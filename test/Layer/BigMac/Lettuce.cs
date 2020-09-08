@@ -12,7 +12,7 @@ namespace SnackAssembler.Layer.BigMac
         public void StickIn(Snack.Part.Service model)
         {
             Messages.Add(nameof(Lettuce));
-            model.Next();
+            model.Continue();
             Messages.Add(nameof(Lettuce));
         }
     }

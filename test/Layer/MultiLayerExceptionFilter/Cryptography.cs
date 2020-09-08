@@ -14,7 +14,7 @@ namespace SnackAssembler.Layer.MultiLayerExceptionFilter
         {
             try
             {
-                part.Next();
+                part.Continue();
             }
             catch (CryptographicException e)
             {

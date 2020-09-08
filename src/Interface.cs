@@ -25,23 +25,23 @@ namespace SnackAssembler
                 {
                     var part = new Snack.Part.Service
                     {
-                        Assembled = default,
+                        Continued = default,
                     };
-                    Next(desktop, part);
+                    Continue(desktop, part);
 
                     layer.StickIn(part);
 
-                    if (!part.Assembled)
+                    if (!part.Continued)
                         throw new Impossible.Service { };
                 };
 
-                static void Next(Desktop.Service desktop, Snack.Part.Service part)
+                static void Continue(Desktop.Service desktop, Snack.Part.Service part)
                 {
-                    part.Next = () =>
+                    part.Continue = () =>
                     {
-                        if (part.Assembled)
+                        if (part.Continued)
                             throw new Impossible.Service { };
-                        part.Assembled = true;
+                        part.Continued = true;
                         Plan(desktop).Assemble();
                     };
                 }
